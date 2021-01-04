@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h4>All Posts</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Created at</th>
+            <th scope="col">users_id</th>
+            <th scope="col">Posted By</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr>
+            <th scope="row">{{post.id}}</th>
+            <!-- <td><a href="/users/{{post.users_id}}/post/{{post.id}}">{{post.title}}</a></td> -->
+            <td><a href="/post/{{post.id}}">{{post.title}}</a></td>
+            <td>{{post.created_at}}</td>
+            <td>{{post.users_id}}</td>
+            <td><a href="/users/{{post.users_id}}">{{post.user_post.first_name}}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/" class="btn btn-secondary">Home</a>
+{% endblock %}

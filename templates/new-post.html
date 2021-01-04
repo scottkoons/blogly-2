@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h4>Add a new post for {{user.first_name}} {{user.last_name}}</h4>
+
+<form method="POST">
+    <div class="form-group row">
+        <input type="text" class="form-control" name="title" id="title" placeholder="Post Title" required>
+        <small id="title" class="form-text text-muted">Enter the post title</small>
+    </div>
+    <div class="form-group row">
+        <textarea type="text" class="form-control" name="content" id="content" placeholder="Post Content"></textarea>
+        <small id="content" class="form-text text-muted">Enter post content</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/users/{{ user.id }}" class="btn btn-danger">Cancel</a>
+</form>
+
+<a href="/" class="btn btn-secondary mt-5">Home</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h4>Edit User</h4>
+
+<form method="POST">
+    <div class="form-group">
+        <input type="text" class="form-control" name="first_name" id="first_name" value="{{ user.first_name }}"
+            required>
+        <small id="first_name" class="form-text text-muted">Please enter the user's first name</small>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="last_name" id="last_name" value="{{ user.last_name }}" required>
+        <small id="last_name" class="form-text text-muted">Please enter the user's last name</small>
+    </div>
+    <div class="form-group">
+        <input type="url" class="form-control" name="image_url" id="image_url" value="{{ user.image_url }}">
+        <small id="image_url" class="form-text text-muted">Please enter a link to the user's profile image</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/" class="btn btn-danger">Cancel</a>
+</form>
+
+{% endblock %}
