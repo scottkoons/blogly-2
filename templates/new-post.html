@@ -14,9 +14,19 @@
         <small id="content" class="form-text text-muted">Enter post content</small>
     </div>
 
+    <div class="form-check">
+        {% for tag in tags %}
+        <div>
+            <input class="form-check-input" type="checkbox" value="{{tag.id}}" id="tag_{{tag.id}}" name="tags">
+            <label class="form-check-label" for="tag_{{tag.id}}">
+                {{tag.name}}
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
     <a href="/users/{{ user.id }}" class="btn btn-danger">Cancel</a>
 </form>
 
-<a href="/" class="btn btn-secondary mt-5">Home</a>
 {% endblock %}

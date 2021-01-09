@@ -3,30 +3,63 @@
 {% block content %}
 <h4>User Details</h4>
 
-<div class="card" style="max-width: 18rem;">
-    <img src="{{user.image_url}}" alt="{{user.first_name}} {{user.last_name}}" class="card-img">
-    <div class="card-body">
-        <h2 class="card-title">{{user.first_name}} {{user.last_name}}</h2>
-        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+<div class="row">
+    <div class="col-4">
+
+        <div class="card" style="max-width: 18rem;">
+            <img src="{{user.image_url}}" alt="{{user.first_name}} {{user.last_name}}" class="card-img">
+            <div class="card-body">
+                <h2 class="card-title">{{user.first_name}} {{user.last_name}}</h2>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
             content.</p> -->
-        <!-- <a href="#" class="btn btn-primary">Edit</a> -->
-        <a class="btn btn-primary" href="/users/{{user.id}}/edit" role="button">Edit</a>
-        <a class="btn btn-warning" href="/users/{{user.id}}/new-post" role="button">Add Post</a>
-        <!-- <a href="#" class="btn btn-danger">Delete</a> -->
-        <a class="btn btn-danger" href="/users/{{user.id}}/delete" role="button">Delete</a>
+                <!-- <a href="#" class="btn btn-primary">Edit</a> -->
+                <a class="btn btn-primary" href="/users/{{user.id}}/edit" role="button">Edit</a>
+
+                <!-- <a href="#" class="btn btn-danger">Delete</a> -->
+                <a class="btn btn-danger" href="/users/{{user.id}}/delete" role="button">Delete</a>
+            </div>
+
+
+        </div>
     </div>
 
-    <h5 class="text-secondary">Posts written by {{user.first_name}} {{user.last_name}}:</h5>
-    <ul>
-        {% for post in user.post %}
-        <li>
-            <a href="/post/{{post.id}}">{{post.title}}</a>
-            <a href="/post/{{post.id}}/edit" class="badge badge-info">Edit</a>
-            <a href="/post/{{post.id}}/delete" class="badge badge-danger">Delete</a>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="col-8">
+        <h5 class="text-secondary">Posts written by {{user.first_name}} {{user.last_name}}:</h5>
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Created at</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in user.post %}
+                <tr>
+                    <td><a href="/post/{{post.id}}">{{post.title}}</a>
+                        <a href="/post/{{post.id}}/edit" class="badge badge-info">Edit</a>
+                        <a href="/post/{{post.id}}/delete" class="badge badge-danger">Delete</a>
+                    </td>
+                    <td>{{post.friendly_date}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+
+        <div class="form-group row">
+            <div class="ml-auto mr-3">
+                <a class="btn btn-primary" href="/users/{{user.id}}/new-post" role="button">Add Post</a>
+            </div>
+        </div>
+    </div>
+
+
 </div>
-<a href="/">Home</a>
+
+
 
 {% endblock %}
